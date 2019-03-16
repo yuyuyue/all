@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 面试题：css制作tab切换
+    :target代表当前点击的锚点元素 
+  -->
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+
+    a{
+      text-decoration: none;
+      color:pink;
+    }
+
+    div{
+      width: 200px;
+      height: 200px;
+      background: deeppink;
+      text-align: center;
+      /* font: 50px/200px '微软雅黑'; 50px:字体大小 200px：行高 '微软雅黑'：字体样式 三个都必须要有这样写 */
+      font: 50px/200px '微软雅黑';
+      display: none;
+    }
+    :target{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <a href="#div1">div1</a>
+  <a href="#div2">div2</a>
+  <a href="#div3">div3</a>
+
+  <div id="div1">div1</div>
+  <div id="div2">div2</div>
+  <div id="div3">div3</div>
+</body>
+</html>

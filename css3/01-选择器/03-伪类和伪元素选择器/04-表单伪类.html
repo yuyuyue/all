@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 表单伪类 
+    :enabled  匹配可以编辑的表单
+    :disabled 匹配不可以编辑的表单
+    :checked  匹配被选中的表单
+    :focus    匹配聚焦的表单
+    input:in-range 代表一个 <input> 元素，其当前值处于属性min 和max 限定的范围之内.
+   -->
+  <style>
+    input[id="1"]:enabled{
+      background: pink;
+    }
+    input[id="2"]:disabled{
+      background: deeppink;
+    }
+    input[id="3"]:checked{
+      width: 200px;
+      height: 200px;
+    }
+    input[id="4"]:focus{
+      background: deeppink;
+    }
+
+
+    /* 面试题：css自制单选按钮 */
+    label{
+      float: left;
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    label > span{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    input[id="5"]{
+      position: absolute;
+      left: -50px;
+      top: -50px;
+    }
+
+    input[id="5"]:checked + span{
+      background: deeppink;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="1">
+  <input type="text" id="2" disabled="disabled">
+  <input type="checkbox" id="3">
+  <input type="text" id="4">
+  <label>
+    <input type="radio" id="5" name="5">
+    <span></span>
+  </label>
+  <label>
+      <input type="radio" id="5" name="5">
+      <span></span>
+    </label>
+</body>
+</html>

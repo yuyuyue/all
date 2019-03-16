@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 
+    s:not(selector)  不是selector的s选择器
+    selector：empty  selector中不包含任何东西包括空格
+  -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      display: block;
+      float: left;
+      width: 100px;
+      height: 30px;
+    }
+
+    div {
+      width: 800px;
+      margin: 0 auto;
+    }
+    /* div的直接子元素a的最后 */
+    div>a:not(:last-of-type) {
+      border-right: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <a href="#">first</a>
+    <a href="#">second</a>
+    <a href="#">third</a>
+    <a href="#">fourth</a>
+    <a href="#">fifth</a>
+  </div>
+</body>
+
+</html>

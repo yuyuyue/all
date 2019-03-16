@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* css属性必须了解默认值和是否可以继承 */
+    /* 通过https://developer.mozilla.org/zh-CN/来查找 */
+    /* 
+      > 子元素选择器: 直接后代选择器，不选择孙子
+      + 直接相邻兄弟选择器：a + b选择与a向下相邻的b选择器 满足 b，并且相邻
+      ~ 通用相邻兄弟选择器
+    */
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    /* color可以继承 */
+    /* color: pink; */
+    #wrap>div {
+      border: 1px solid pink;
+    }
+
+    #wrap .inner2+.inner {
+      border: 1px solid pink;
+    }
+
+    #wrap .inner2~.inner {
+      border: 1px solid pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- li不可以嵌套,会自动同级 -->
+    <div class="inner">1
+      <div>1-1</div>
+    </div>
+    <div class="inner2">2</div>
+    <div class="inner">3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+	 /*存在和值属性选择器 css2
+		[attr]:该选择器包含attr属性的所有元素，无论attr为何值
+		[attr="val"]:选择器包含attr的属性，且值也要为val
+		[attr~="val"]:选择器包含attr的属性，并且属性是一个以空格分隔的 列表，其中至少有一个val
+	 子串值选择器 css3
+		[attr|="val"]: 选择器包含attr的属性，并且属性值必须以是val或者是以val-开头才可以选中
+		[attr^="val"]: 选择器包含attr的属性，并且只要包含val开头就可以选中
+		[attr$="val"]: 选择器包含attr的属性，并且只要以val结尾就可以选中
+		[attr*="val"]: 选择器包含attr的属性，并且只要包含val就可以选中
+	*/
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    /* div[name] {
+      border: 1px solid;
+    }
+
+    div[name="yby-b"] {
+      border: 1px solid;
+    }
+
+    div[name~="yby"] {
+      border: 1px solid;
+    }
+
+    div[name|="yby"] {
+      border: 1px solid;
+    }
+
+    div[name^="yby"] {
+      border: 1px solid;
+    }
+
+    div[name$="yby"] {
+      border: 1px solid;
+    }
+
+    div[name*="yby"] {
+      border: 1px solid;
+    } */
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div name="yby-a">圆滚滚</div>
+    <div name="yby-b">小可爱</div>
+    <div name="yby_c">小贱贱</div>
+    <div name="yby_d">小明</div>
+    <div name="yby_e">胖嘟嘟</div>
+  </div>
+</body>
+
+</html>

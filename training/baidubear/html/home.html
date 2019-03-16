@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="../css/bear.css">
+  <link rel="stylesheet" href="../css/bear-life.css">
+  <title>baidu bear</title>
+  <style>
+    
+    .scenario {
+      background-color: #bf855b;
+    }
+
+    /* 页面顶部的title容器 */
+    .view-title-c {
+      margin-left: 1rem;
+      margin-top: 1rem;
+      padding-left: .625rem;
+      position: relative;
+    }
+
+    /* 白色竖线 */
+    .view-title-pre {
+      width: .15625rem;
+      height: 100%;
+      left: 0;
+      top: 0;
+      position: absolute;
+      background-color: #fff;
+      animation: lineIn 0.4s 0s linear forwards;
+    }
+
+    @keyframes lineIn{
+      0%{
+        /* height: 0%; */
+        transform: scale(0);
+      }
+      100%{
+        /* height: 100%; */
+        transform: scale(1);
+      }
+    }
+    
+    .view-title-i{
+      opacity: 0;
+      animation: titleIn 0.25s 0s linear forwards;
+
+    }
+
+    @keyframes titleIn{
+      0%{
+        transform: translate3d(6rem, 0, 0);
+        opacity: 0;
+      }
+      100%{
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+
+    }
+
+    .view-title{
+      font-size: 2rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .view-title-desc{
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="view proload">
+    <div class="load-logo-c">
+      <div class="ride1-c">
+        <div class="ride"></div>
+      </div>
+      <div class="process-c">
+        <div class="process-v"></div>
+      </div>
+      <div class="process-txt"></div>
+    </div>
+    <div id="next">下一屏</div>
+  </div>
+
+  <div class="view index"></div> -->
+  <div class="view scenario">
+    <div class="view-title-c">
+      <div class="view-title-pre"></div>
+      <div class="view-title-i">
+        <div class="view-title">生活中,</div>
+        <div class="view-title-desc">
+          经常有这种时候...
+        </div>
+      </div>
+    </div>
+    <!-- 剧情work -->
+    <div class="scenario work">
+      <div class="scenario-bg"></div>
+      <div class="work-man-c">
+        <div class="work-man"></div>
+        <div class="paper paper0">
+          <div class="paper paper1"></div>
+          <div class="paper paper2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script>
+    const process = document.querySelector('.process-v');
+    const next = document.getElementById('next');
+    next.addEventListener('click', () => {
+      const viewProload = document.querySelector('.view.proload');
+      viewProload.style.transform = 'translate3d(0,' + -100 + '%, 0)';
+    });
+    let width = 10;
+
+    //隔多少时间就执行一次 
+    let inteval = setInterval(() => {
+      width += 10;
+      process.style.width = width + '%';
+      if (width >= 100) {
+        clearInterval(inteval);
+      }
+    }, 100);
+    // 隔多少时间只执行一次
+    // setTimeout(() => {}, 100);
+
+  </script> -->
+</body>
+
+</html>

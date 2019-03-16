@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 由::before 和::after 生成的伪元素 包含在元素格式框内， 因此不能应用在替换元素上， 比如<img>或<br> 元素。 -->
+  <!-- 伪元素可以写成:: 也可以写成(:)最好用前者
+    ::before       :before 创建一个伪元素，其将成为匹配选中的元素的第一个子元素。常通过 content 属性来为一个元素添加修饰性的内容。此元素默认为行内元素。
+    ::after        ::after用来创建一个伪元素，作为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。这个虚拟元素默认是行内元素。
+    ::firstLetter  ::first-letter会选中某 block-level element（块级元素）第一行的第一个字母，并且文字所处的行之前没有其他内容（如图片和内联的表格）
+    ::firstLine    ::first-line CSS pseudo-element （CSS伪元素）在某 block-level element （块级元素）的第一行应用样式。第一行的长度取决于很多因素，包括元素宽度，文档宽度和文本的文字大小。::first-line伪元素只能在一个display值为block, inline-block, table-cell 或者 table-caption中有用.。在其他的类型中，::first-line 是不起作用的.
+    ::selection    ::selection CSS伪元素应用于文档中被用户高亮的部分（比如使用鼠标或其他选择设备选中的部分）
+   -->
+  <style>
+    .wrap::after{
+      content:'';
+      display: block;
+      width: 200px;
+      height: 200px;
+      background: pink;
+    }
+    a::before {
+      content: "♥";
+    }
+    .wrap::selection{
+      color: pink;
+      background-color: #fff;
+    }
+  
+  </style>
+</head>
+<body>
+  <a href=""></a>
+  <div class="wrap">
+    11
+  </div>
+</body>
+</html>
