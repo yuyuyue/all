@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<!-- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+  Object.getPrototypeOf()：方法返回指定对象的原型（内部[[Prototype]]属性的值
+  实例对象自身定义了隐式原型__proto__: vlaue 或 "__proto__": value 时，不会创建名为__proto__属性。如果value == Object 或者 null ，那么Object的[[Prototype]]会被设置为value 否则不会变。
+  实例对象的__prot__ 指向原型对象prototype 
+  原型对象中的__prot__ 沿着原型链指向指向向上的原型对象的prototype
+-->
+
+
+<body>
+
+  <script>
+
+
+    //*fun{}实例对象 Fun(){}和Fun{}原型对象三者的关系
+    function Fun() { }
+    let fun = new Fun()
+    console.log(Fun)//Fun(){} 名字为Fun的构造函数  'function'
+    console.log(fun)// Fun{} Fun对象 有__proto__ : Object  'object'
+    console.log(Fun.prototype)//{constructor: ƒ} Fun的原型对象 里面有一个默认的constructor: Fun() 和一个默认的__proto__ : Object()  'object'
+    console.log(fun.constructor);// Fun(){} Fun的构造函数
+    console.log(fun.__proto__);//{constructor: ƒ} Fun原型对象  'object'
+    console.log(Fun.prototype.constructor);// Fun(){} 构造函数 'function'
+
+    console.log(fun.constructor === Fun === Fun.prototype.constructor);//true
+    console.log(fun.__proto__ === Fun.prototype);//true
+
+    //fun实例对象是Fun(){}构造函数的一个实例对象 
+    //Fun(){}构造函数通过属性prototype指向他的原型对象Fun{} 
+    //fun实例对象通过属性__proto__来访问原型对象Fun{}
+    //对象(原型和实例)都可以通过constructor来得到Fun(){}构造函数
+
+
+    //手写原型链
+    //1
+    let a = {name : 'yby'}
+    let b = {age : 18}
+    let c = ['f','c']
+    function F(){// 内部执行 this.prototype = {__protot__: Object conostructor : F()}
+      this.a = 1
+    }
+    let f  = new F() //this.__proto__ = F.prototype
+    console.log(F.prototype);
+    
+
+    // 实例通过__proto__来添加隐式原型链 b必须是对象或者null，不然无法添加
+    a.__proto__ = b
+    b.__proto__ = c
+    c.__proto__ = F.prototype
+    console.log(a);//18
+    console.log(a.__proto__)// {age : 18} b对象
+    console.log(a.__proto__.__proto__)//{sex : 'f'} c原型对象
+    console.log(a.__proto__.__proto__.__proto__)//{constructor f} F函数的原型对象
+    console.log(a.__proto__.__proto__.__proto__.__proto__)//{constructor f} F函数的原型对象
+    console.log(F.prototype.c)
+    // 2函数与函数
+    function A(){}
+    function B(){}
+    //修改构造函数的指向
+    A.prototype = new B()
+    
+    
+    
+    //函数对象
+    // 函数也是一个对象时，是通过new Function()得到的
+    // function f(){}
+    // let f = new Funtion()
+    // f().__proto__ == Function.prototype
+    // Function.__proto__ == Object
+    
+
+    //内置构造函数
+    // console.log(Date.prototype, typeof Date.prototype);//具有Date定义的函数的 Object function 
+
+
+    //通过Math的特殊性
+    // console.log(Math.prototype, typeof Math.prototype);//undefined 'undefined' Math没有prototype原型，也就是说Math不是一个函数，而是一个继承了Object的对象
+    // console.log(Math, typeof Math) //Math对象 'object' 
+    // console.log(Math.__prot__)//undefined  没有prototype原型自然也就没有定义他的__prot__属性
+    // console.log(Math.constructor)//Object() Math自身没有constructor构造器，他的constructor继承Object
+    // console.log(Object.getPrototypeOf(Math))//Object()
+    // console.log(typeof Object.getPrototypeOf(Math))//'object'
+    // console.log(Object.getPrototypeOf(Math) === Math.constructor)//false
+    // console.log(Object.getPrototypeOf(Math) === Math)//false
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

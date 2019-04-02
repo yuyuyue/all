@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 
+    1. 读取对象的属性值时: 会自动到原型链中查找
+    2. 设置对象的属性值时: 不会查找原型链, 如果当前对象中没有此属性, 直接添加此属性并设置其值
+    3. 方法一般定义在原型中, 属性一般通过构造函数定义在对象本身上
+        相当于将属性变为实体对象的私有的，不可以通过原型链访问
+        而将方法变为公有的，可以被使用
+   -->
+</head>
+<body>
+  
+  <script>
+    function F(){}
+    let f1 = new F()
+    let f2 = new F()
+    F.prototype.a = 0
+    
+    console.log(f1.a, f1);//0 F{}
+    f2.a = 1
+    console.log(f2.a, f2);//1 F{a : 1}
+    
+    function Person(name, age){
+      this.name = name
+      this.age = age
+      Person.prototype.setName = function(name){this.name = name}
+    }
+    let person = new Person('a',18)
+    console.log(person);//Person{name:a, age:18} __proto__ ==> setName : f (name)
+    
+  </script>
+</body>
+</html>

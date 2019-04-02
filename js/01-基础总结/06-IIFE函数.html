@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<!-- 
+  1理解
+    全称：Immeditately-Invoked Function Expression
+  2作用
+    隐藏实现
+    不会产生一个无用的全局变量
+-->
+<body>
+ 
+<script>
+
+(function(){ //匿名函数的自调用 常用
+  window.$ = function(){//向外暴露一个全局函数
+    return {
+      test : test
+    }
+  }  
+
+  let a = 1;
+  function test(){
+    console.log(++a);
+    
+  }
+})()
+
+$().test()
+</script>
+</body>
+</html>

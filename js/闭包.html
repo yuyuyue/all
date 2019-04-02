@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<!-- 闭包是指函数可以将自身传递出自身词法作用域，使得词法作用域不会被回收，而词法作用域对函数的引用就叫闭包 -->
+
+<body>
+  <script>
+    // function foo() {
+    //   var a = 2;
+
+    //   function bar() { console.log(a); }
+
+    //   return bar;
+    // }
+
+    // var baz = foo();
+
+    // baz(); // 2 
+
+    //let 使用let就可以实现定义五个不同的i的词法作用域
+    // for (let i = 1; i <= 5; i++) { 
+    //   setTimeout(function timer() { 
+    //     console.log(i)
+    //   }, i * 1000) 
+    // }
+
+    //方法创建更多的闭包作用域 对应var来说{}是没有办法创造闭包的作用域的
+    //所以我们需要创建一个函数来创建一个作用域
+    //可以使用IIFE来创建一个作用域
+    // for (var i = 1; i <= 5; i++) {
+
+    //     function F(i){
+    //         setTimeout(function timer() { 
+    //         console.log(i)
+    //       }, i * 1000) 
+    //     }
+
+    //     var f = F(i);
+    // }
+
+    //上面的方法会产生多于的变量var f 会污染全局变量
+    //我们可以使用IIFE函数则不会产生
+    for (var i = 1; i <= 5; i++) {
+      (function (j) {
+        setTimeout(function timer() {
+          console.log(j)
+        }, j * 1000)
+      })(i)
+    }
+
+
+  </script>
+</body>
+
+</html>

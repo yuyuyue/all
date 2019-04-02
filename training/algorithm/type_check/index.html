@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var Type = {}
+    //立即执行函数是闭包的温床 
+    //
+    for (var i = 0, type; type = ['String', 'Array', 'Number','Date','Function','Error','JSON'][i++];) {
+      (function (type) {
+        Type["is" + type] = function (object) {
+          return Object.prototype.toString.call(object) === '[object ' + type + ']'
+        }
+      })(type)
+    }
+    Object.prototype.toString.call([])
+  </script>
+</body>
+
+</html>

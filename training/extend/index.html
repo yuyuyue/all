@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>构造函数&原型&实例</title>
+</head>
+
+<body>
+  <script>
+    // // constructor
+    // function Person(name){
+    //   this.name = name
+    // }
+    // // prototype 原型 对象
+    // Person.prototype = {
+    //   grtName : function(){
+    //     console.log(this.name);
+    //   }
+    // }
+    // //instance 
+    // var person = new Person('aaa')
+    // //grtName 作为对象的方法被调用, this 指向对象
+    // person.grtName()
+    // console.log(person)
+    var isPalindrome = function (s) {
+      var str = s.replace(/\s+|[^0-9a-zA-Z]/g, '').toLowerCase()
+      console.log(str)
+      console.log(s.match(/\s+|[^0-9a-zA-Z]/g));
+            
+      var reStr = str.split('').reverse().join('')
+      console.log(reStr)
+      return reStr === str
+    };
+    let s = "A man, a plan, a canal: Panama"
+    isPalindrome(s)
+  </script>
+</body>
+
+</html>

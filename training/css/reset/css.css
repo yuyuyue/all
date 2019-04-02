@@ -1,0 +1,38 @@
+body, div, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, blockquote{
+  margin: 0;
+  padding: 0;
+}
+
+a:link {
+  color: #3377aa;
+  text-decoration: none;
+}
+a:visited{
+  color: #666699;
+  text-decoration: none;
+}
+a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background: #3377aa;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+h2 {
+  font: 15px Arial sans-serif;
+  color: #007722;
+  margin: 0 0 12px 0;
+  line-height: 150%;
+}
+img {
+  border: 0;
+}
+a img{
+  border-width: 0;
+  vertical-align: middle;
+}
+ul, li {
+  list-style: none;
+}

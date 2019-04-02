@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<!--
+1. 在全局代码执行前, JS引擎就会创建一个栈来存储管理所有的执行上下文对象
+2. 在全局执行上下文(window)确定后, 将其添加到栈中(压栈)
+3. 在函数执行此时为执行上下文对象，又叫活动对象，上下文创建后, 将其添加到栈中(压栈)
+4. 在当前函数执行完后,将栈顶的对象移除(出栈)
+5. 当所有的代码执行完后, 栈中只剩下window
+-->
+<body>
+<script>
+  
+  var a = 10
+  console.log('a')
+  
+  var bar = function (x) {
+    console.log('bar s')
+    foo(x + b)
+    var b = 5
+    console.log('b')
+    
+    console.log('bar e')
+  }
+  var foo = function (y) {
+    console.log('foo s')
+    var c = 5
+    console.log('c');
+    console.log('foo e')
+  }
+  bar(10)
+  // bar(10) 
+  //编译 a,bar,foo ==> undefined  this = window
+  //执行上下文过程
+  //先将window压入上下文栈中
+  //执行a = 10 
+  //执行bar，将bar压入上下文栈中
+  // bar 中执行了foo() 将foo压入上下文栈中
+  // foo()执行完，出栈
+  //bar()执行完，出栈
+  //window出栈
+</script>
+</body>
+
+</html>

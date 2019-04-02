@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--
+    1. instanceof是如何判断的?
+      * 表达式: A instanceof B
+      * 如果B函数的显式原型对象在A对象的原型链上, 返回true, 否则返回false
+        A可以通过__proto__来找到 B
+    2. Function是通过new自己产生的实例
+  -->
+</head>
+<body>
+  <script>
+    function F(){}
+
+    let f = new F()
+
+    // console.log(f instanceof F)//true
+    // console.log(f instanceof Function)//false
+    // console.log(f instanceof Object)//true
+    
+    // console.log(this instanceof Object)
+
+    // console.log(this.window)
+    // console.log(window)
+    
+    // console.log(F.prototype);
+    
+    function add(a, b){
+      this.a = a
+      this.b = b
+    }
+    function sub(a,b){
+      this.c = a
+      this.d = b
+    }
+    add.call(sub, 2, 1)
+    console.log(add.call(sub, 2, 1) === sub(3, 1))
+    console.log(sub(3,1));
+    
+    // console.log(add);
+    // let a = new add()
+    // console.log(a);
+    
+    
+    
+    
+  </script>
+</body>
+</html>

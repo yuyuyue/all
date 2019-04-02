@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>arguments</title>
+</head>
+<body>
+  <script>
+    function lileiFunc(){
+      var arrow_lileiFunc = () => {
+        console.log(arguments)
+      }
+      arrow_lileiFunc(1,2,3)//传的参数无法被取到，获得的是父类的arguments
+      console.log(arguments)
+    }
+   
+    lileiFunc(3,4,5)
+    
+  </script>
+</body>
+</html>

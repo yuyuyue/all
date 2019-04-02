@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>圣杯布局</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    header,footer{
+      text-align: center;
+      width: 100%;
+      background-color: #aaa;
+    }
+    .content{
+      padding: 0 200px;
+      /* width: 100%;手动定义了w，padding将往外挤 */
+    }
+    .text{
+      text-align: center;
+      font-size: 100px;
+      line-height: 200px;
+    }
+    .main{
+      float: left;
+      width: 100%;
+      height: 200px;
+      background-color: pink;
+    }
+    .left{
+      float: left;
+      height: 200px;
+      width: 200px;
+      background-color: blue;
+      /* margin-left: -100%; */
+      margin:0;
+    }
+    .right{
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+    .foot{
+      width: 100%;
+      height: 100%;
+      background-color: red;
+    }
+    .content::after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    .content{
+      padding: 200px;
+      /* bfc hidden scroll auto */
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <header>圣杯布局</header>
+  <div class="content">
+    <div class="main text">main</div> 
+    <div class="left text">left</div>
+    <div class="right text">righ</div>
+    <!-- 清除浮动1 -->
+    <div style="clear:left;"></div>
+  </div>
+  <!-- <footer>底部</footer> -->
+  <div class="foot">底部</div>
+</body>
+</html>

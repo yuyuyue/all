@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>array map</title>
+</head>
+<body>
+  <script>
+    const arr = [
+      {name : 'EUCT', good : false},
+      {name : 'jxufe', good : true},
+      {name : 'NS', good : true}
+    ]
+    // 
+    const newArrs = arr.forEach(function(e){
+      return e
+    })
+   
+    
+    // map 返回新的数组
+    //     新数组的每一项都是循环时回调函数返回的结果
+    // const newArr = arr.map(function(e){
+    //   return {
+    //     name : e['name'],
+    //     good : e["good"] ? '真好' : '略略略'
+    //   }
+    // })
+
+    const schools = ['EUCT','JXUFE','NS']
+
+    const newSchool = schools.map(function(e){
+      return '<li>' + e + '</li>'
+    })
+    
+    // ['<li>EUCT</li>','<li>JXUFE</li>','<li>NS</li>']
+    console.log(schools);
+    console.log(newSchool);
+  </script>
+</body>
+</html>

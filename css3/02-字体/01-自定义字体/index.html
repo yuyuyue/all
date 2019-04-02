@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- C:\Windows\Fonts 所有的font字体 -->
+  <style>
+    /* font: 50px "微软雅黑";必须存在大小和字体才起作用 */
+    #test{
+      font: 50px "new";
+    }
+    /* @font-face自定义字体并且部署到服务器上
+      font-family: "new";自定义字体名
+      src：url() 引入字体
+      优点不需要本机有该字体,每个用户都可以拿到，缺点增加网络负担
+     */
+    @font-face{
+      font-family: "new";
+      src: url(./font/BAUHS93.TTF);
+    }
+  </style>
+</head>
+<body>
+  <div id="test">小悦悦 yby</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- css声明的优先级
+    选择器只存在特殊性，根据自身选择器组件的优先级，特殊性可以使用0 0 0 0四位来表示
+    以下的声明优先级依次递减
+    内联选择器组件声明(元素内部的style)最高，使得选择器的特殊性为 1 0 0 0
+    id选择器组件声明第二：使得选择器的特殊性为 0 1 0 0
+    class选择器组件生声明第三：使得选择的特殊性为 0 0 1 0
+    元素和伪类选择器组件声明第四：使得选择器的特殊性为 0 0 0 1
+    通配符，关系，:not伪类选择器，继承对选择器的特殊性没有影响
+    同级选择器的优先级累计
+    但是:not()括号中的选择器对优先级有影响
+    !important可以覆盖上面的优先级,但是会破坏固有的优先级
+      一定要优化考虑使用样式规则的优先级来解决问题而不是 !important
+      只有在需要覆盖全站或外部 css（例如引用的 ExtJs 或者 YUI ）的特定页面中使用 !important
+      永远不要在全站范围的 css 上使用 !important
+      永远不要在你的插件中使用 !important
+   -->
+   <style>
+     /* 0 1 0 0 */
+     #id{
+      color: aqua;
+     }
+     /* 0 0 4 0 */
+     .pink.add.a.c{
+      color: blue;
+     }
+     /* 0 0 0 1 */
+     div{
+      color: pink;
+     }
+   </style>
+</head>
+<body>
+  <div style="color: #000;" id="id" class="pink add a c">
+    1111
+    <div id="id" class="pink add a c">1111</div>
+    <div class="pink add a c">1111</div>
+    <div>1111</div>
+  </div>
+</body>
+</html>

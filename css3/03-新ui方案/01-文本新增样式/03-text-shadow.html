@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- text-shadow: color x y c 可以多层 -->
+  <!-- direction: rtl;
+      unicode-bidi: bidi-override;
+      文字排版
+  -->
+  <!-- 
+     overflow: hidden;
+      text-overflow: ellipsis;
+      隐藏显示文字省略号
+   -->
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    /* 描边 */
+    #wrap{
+      width: 300px;
+      height: 300px;
+      margin: 100px auto;
+      background: rgb(0,0,0);
+      color: rgba(255, 255, 255,.5);
+      font-size: 30px;
+      line-height: 300px;
+      text-align: center;
+      -webkit-text-stroke: 4px pink;
+      direction: rtl;
+      unicode-bidi: bidi-override;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    我是wrap
+  </div>
+</body>
+</html>

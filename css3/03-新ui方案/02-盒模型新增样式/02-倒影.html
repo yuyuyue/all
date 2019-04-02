@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+      /* img的居中 */
+			html,body{
+				height: 100%;
+			}
+			body{
+				text-align: center;
+			}
+			body:after{
+				content: "";
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+      /* -webkit-box-reflect:left 10px; 有顺序问题 left是方向 10距离 */
+			img{
+				vertical-align: middle;
+				-webkit-box-reflect:left 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="./周冬雨.jpg" width="200" height="200"/>
+	</body>
+</html>

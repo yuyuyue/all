@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var rotateRight = function (head, k) {
+
+      let h = head
+      let pre = null
+      if (head == null || head.next == null || k <= 0) {
+        return head
+      }
+      let count = 1
+      while (head.next != null) {
+        head = head.next
+        count++
+      }
+
+      console.log('count' + count)
+      head.next = h
+      head = h
+      k = k % count
+      console.log(k)
+      let i = 0
+      while (i < count - k - 1) {
+        head = head.next
+        i++
+      }
+      pre = head
+      head = head.next
+      pre.next = null
+      return head
+    };
+  </script>
+
+</body>
+
+</html>

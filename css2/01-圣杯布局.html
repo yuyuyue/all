@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .cont{
+      width: 100%;
+      padding: 0 200px;
+    }
+    .left{
+      float: left;
+      position: relative;
+      left: -200px;
+      width: 200px;
+      /* 想对于cont */
+      margin-left: -100%;
+      background-color: deeppink;
+    }
+    .right{
+      float: left;
+      width: 200px;
+      margin-left: -200px;
+      position: relative;
+      right: 200px;
+      background-color: deeppink;
+    }
+    .middle{
+      float: left;
+      width: 100%;
+      min-width: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="cont">
+    <div class="middle">middle</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+  
+</body>
+</html>

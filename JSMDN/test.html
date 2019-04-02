@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function foo() {//函数无法绑定
+    //   var a = 0;
+    //   return {
+    //     a : a
+    //   }
+    // }
+    // // let foo = {
+    // //   a : 1
+    // // }
+    // function baz() {
+    //   console.log(this);
+    //   console.log(this.a);
+    // }
+    // baz.call(foo);
+
+
+    // var myModules = (function (){
+    //   var modules = {}
+
+    //   function define(name, deps, impl){
+    //     for (var i = 0; i<deps.length; i++){
+    //       // console.log('11');
+
+    //       deps[i] = modules[deps[i]];
+    //       console.log(modules[deps[i]])
+    //       console.log(deps[i]);
+    //     }
+    //     console.log(deps[0])
+    //     modules[name] = impl.apply(impl, deps)
+    //     // console.log(impl) 
+    //     // console.log(impl.apply(impl))
+    //     // console.log(modules[name])
+    //   }
+    //   function get(name){
+    //     return modules[name]
+    //   }
+    //   return {
+    //     define : define,
+    //     get : get
+    //   }
+    // })();
+
+    // myModules.define("bar", [], function(){
+    //   function hello(who){
+    //     return "Hello: " + who
+    //   }
+    //   return {
+    //     hello : hello
+    //   }
+    // })
+    // // var bar = myModules.get("bar");
+    // // console.log(bar.hello("a"));
+
+    // myModules.define("foo", ["bar"], function(){
+    //   var who = "hippo"
+    //   function awesome(){
+    //     console.log(bar.hello(who).toUpperCase())
+    //   }
+    //   return {
+    //     awesome : awesome
+    //   }
+    // })
+    // var bar = myModules.get("bar")
+    // var foo = myModules.get("foo")
+    // foo.awesome()
+
+    // new绑定和隐性绑定优先级
+    // function foo(val){
+    //   // console.log(this)
+    //   this.a = val
+    //   // return this.a
+    // }
+    // var obj = {
+    //   a : 1,
+    //   foo : foo
+    // }
+    // var obj1 = new foo(3)
+    // obj.obj1//
+    // console.log(obj1.a)//3 //没有改变
+
+
+    //显示绑定和隐性绑定
+    // function foo(){
+    //   console.log(this.a)
+    // }
+    // var obj1 = {
+    //   a : 1,
+    //   foo : foo
+    // }
+    // var obj2 = {
+    //   a : 2,
+    //   foo : foo
+    // }
+    // obj1.foo()
+    // obj2.foo()
+    // obj1.foo.call(obj2)
+    // obj2.foo.call(obj1)
+    // obj1.foo()//重新绑定了
+
+    //硬绑定
+    // function foo(){
+    //   console.log( this.a )
+    // }
+    // var obj = {
+    //   a : 2
+    // }
+    // var bar = function(){
+    //   foo.call(obj)
+    // }
+    // var obj2 = {
+    //   a : 3,
+    //   foo : foo
+    // }
+    // obj2.foo()
+    // bar()
+    // setTimeout(bar, 3)
+    // bar.call(window)
+
+    //new 和 显示
+    // function foo(val){
+    //   this.a = val
+    // }
+
+    // var obj1 = {}
+
+    // var bar = foo.bind(obj1)
+    // bar(2)
+    // console.log(obj1.a)
+
+    // var baz = new bar(3)
+    // console.log(baz.a)
+    // console.log(obj1.a)
+
+
+    //默认绑定
+    // function foo(){
+    //   console.log(this.a);
+    // }
+    // var a = 2
+    // var o = {a : 3, foo : foo}
+    // var p = {a : 4}
+    // // o.foo()
+    // (p.foo = o.foo)();
+    // console.log(o.foo)//foo函数
+    // console.log(o.foo())//foo函数执行结果
+
+
+    // p.foo = o.foo //将o.foo函数的this指针指向了p.foo
+    // p.foo()//4
+    // p.foo = o.foo()//将3 赋值给p.foo
+    // p.foo//3
+    // o.foo()
+    // var obj = {
+    //   a : 2,
+    //   foo : foo
+    // }
+    // var obj1 = {
+    //   a : 3
+    // }
+    // obj1.foo = obj.foo
+    // // var bar = obj.foo
+    // var a = 1
+    // obj1.foo()
+
+    // var myObject = {
+    //   a : 2
+    // }
+    // console.log( Object.getOwnPropertyDescriptor(myObject, "a"));
+
+    // var someObj = {
+    //   a : 2,
+    //   b : 1
+    // }
+    // var newObj = JSON.parse(JSON.stringify(someObj))
+    // console.log(newObj === someObj)//false
+
+    // var s = true
+    let  obj = {
+
+    }
+    let i = [1]
+    
+
+
+
+  </script>
+</body>
+
+</html>

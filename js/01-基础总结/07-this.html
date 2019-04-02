@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<!-- 
+  1this 是什么
+    任何函数本质上都是通过某个对象来调用的，如果没有就是window
+    所有函数内部都有一个变量this
+    他的值是当前函数的对象
+  2如何确定this的值
+    F() : window
+    f. : F
+    new F() : 新建对象F()
+    f.call/apply(obj): obj
+ -->
+<body>
+  <script>
+    function Person(name){
+
+      console.log('new');
+      console.log(this);
+      this.name = name;
+      
+
+      this.getName = function(){
+        console.log('get');
+        console.log(this);
+        return this.name;
+        
+      };
+      
+      this.setName = function(name){
+        console.log('set');
+        console.log(this);
+        this.name = name;
+ 
+      };
+    }
+    console.log(Person instanceof Function);//true 由此可以看出Person也是一个函数
+    Person('aaaa');//直接调用构造函数，this是window
+    console.log(this);//window
+    
+    let f = new Person('yby');
+
+    f.getName();//this => Person
+
+    let obj = {};
+    f.setName.call(obj, 'aa'); //this => onj {}
+  </script>
+</body>
+</html>

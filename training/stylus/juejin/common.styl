@@ -1,0 +1,84 @@
+$fz = 14px
+$bg_color = #f4f5f5
+$text_color = #333333
+$text_color_normal = #666666 
+
+border-radius(num)
+  -webkit-border-radius num
+  -moz-border-radius num
+  -ms-border-radius num
+  -o-border-radius num
+  border-radius num
+
+
+html
+  font-size $fz
+  font-family -apple-system sans-serif
+  background-color $bg_color
+  text-rendering optimizeLegibility
+  color $text_color
+
+body
+  font-size $fz
+  margin 0
+  overflow-y scroll
+  -webkit-overflow-scrolling touch
+  
+
+a.button
+  border-radius(50%)
+
+.book-card 
+  max-width 720px
+  width 100%
+  margin 0 auto 12px
+  position relative
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.15)
+  background-color #ffffff
+
+// 子元素直接写在父元素下
+.book-bought
+  display flex
+  padding 8px 22px 8px 15px
+  border-top 1px solid #ecf0f3
+  align-items center
+  cursor pointer
+
+  .bought-label
+    // 使用vertical-align: middle来居中时，不能使用display inline-flex,会使得盒子内的元素都被赋予高度
+    display inline-flex
+    color $text_color_normal
+    font-weight 400
+    font-size 16px
+    align-items center
+    // justify-content center
+    flex-shrink 0
+    img 
+      // vertical-align: middle
+    span 
+      // vertical-align: middle
+  .bought-users
+    // flex 为1除了其他的都是他的
+    // flex 1
+    // flex-grow剩下得到flex空间
+    flex 1
+    width 24px
+    height 24px
+    display flex
+    overflow hidden
+    // 去除多余的半个
+    flex-wrap wrap
+    .bought-user
+      border-radius(50%)
+      width 24px
+      height 24px
+      background-size cover
+      background-position: 50%
+      background-repeat no-repeat
+      margin-left 10px
+      flex-shrink 0
+      &:first-child
+        margin-left 0
+     
+
+

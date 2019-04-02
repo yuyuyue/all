@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex 缩小</title>
+  <!--  flex-shrink: 1;缩小的比例 所有shrik的和的百分比 -->
+  <!-- flex-wrap： 不够就换行，基本没用 -->
+  <style>
+    .content{
+      width: 500px;
+      height: 400px;
+      display: flex;
+      background-color: #666666;
+    }
+    .box{
+      flex-shrink: 1;
+    }
+    .box1{
+      flex-shrink: 2;
+    }
+    .content div{
+      /* 弹性的基本宽度 */
+      flex-basis: 120px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="box" style="background-color: red"></div>
+    <div class="box" style="background-color: green"></div>
+    <div class="box" style="background-color: yellow"></div>
+    <div class="box1" style="background-color: pink"></div>
+    <div class="box1" style="background-color: blue"></div>
+  </div>
+</body>
+</html>

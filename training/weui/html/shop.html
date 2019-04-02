@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>商城</title>
+  <link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/shop.css">
+</head>
+
+<body>
+  <div class="page tabbar js_show">
+    <div class="page__bd" style="height: 100%;">
+      <div class="weui-tab">
+        <div class="weui-tab__panel tab show">
+
+        </div>
+        <div class="weui-tab__panel tab">
+          2
+        </div>
+        <div class="weui-tab__panel tab">
+          <div class="mine-title">我的</div>
+          <div class="weui-cells">
+            <div class="weui-cell">
+              <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                <img src="../images/kafei.png" style="width: 50px;display: block">
+              </div>
+              <div class="weui-cell__bd">
+                <p>联系人名称</p>
+                <p style="font-size: 13px;color: #888888;">摘要信息</p>
+              </div>
+            </div>
+            <div class="weui-cell weui-cell_access">
+              <div class="weui-cell__bd">
+                <span style="vertical-align: middle">单行列表</span>
+                <span class="weui-badge" style="margin-left: 5px;">8</span>
+              </div>
+              <div class="weui-cell__ft"></div>
+            </div>
+            <div class="weui-cell weui-cell_access">
+              <div class="weui-cell__bd">
+                <span style="vertical-align: middle">单行列表</span>
+                <span class="weui-badge" style="margin-left: 5px;">8</span>
+              </div>
+              <div class="weui-cell__ft">详细信息</div>
+            </div>
+            <div class="weui-cell weui-cell_access">
+              <div class="weui-cell__bd">
+                <span style="vertical-align: middle">单行列表</span>
+                <span class="weui-badge" style="margin-left: 5px;">New</span>
+              </div>
+              <div class="weui-cell__ft"></div>
+            </div>
+          </div>
+        </div>
+        <div class="weui-tabbar">
+          <a id="1" href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+            <span style="display: inline-block;position: relative;">
+              <img src="../images/avatar.jpg" alt="" class="weui-tabbar__icon">
+              <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+            </span>
+            <p class="weui-tabbar__label">微信</p>
+          </a>
+          <a id="2" href="javascript:;" class="weui-tabbar__item">
+            <span style="display: inline-block;position: relative;">
+              <img src="../images/baomihua.png" alt="" class="weui-tabbar__icon">
+              <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+            </span>
+            <p class="weui-tabbar__label">发现</p>
+          </a>
+          <a id="3" href="javascript:;" class="weui-tabbar__item">
+            <img src="../images/dangao.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">我</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tabbar_choose = document.querySelectorAll('.weui-tabbar__item')
+    const tabs = document.querySelectorAll('.weui-tab__panel')
+    // console.log(tabbar_choose)
+    for (let i = 0; i < tabbar_choose.length; i++) {
+      tabbar_choose[i].addEventListener('click', function () {
+
+        console.log(this)
+        console.log(tabbar_choose[i])
+
+        showTab(tabbar_choose[i])
+      })
+    }
+
+    function showTab(tab) {
+      console.log(tab);
+
+      for (let i = 0; i < tabs.length; i++) {
+        if (tabbar_choose[i] === tab) {
+          tabs[i].classList.add('show')
+          tabbar_choose[i].classList.add('weui-bar__item_on')
+        } else {
+          tabs[i].classList.remove('show')
+          tabbar_choose[i].classList.remove('weui-bar__item_on')
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>
