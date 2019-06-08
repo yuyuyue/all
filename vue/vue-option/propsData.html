@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>PropsData Option Demo</title>
+</head>
+<body>
+    <h1>PropsData Option Demo</h1>
+    <hr>
+    <header></header>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript">
+      var  header_a = Vue.extend({
+    template:`<p>{{message}}-{{a}}</p>`,
+    data:function(){
+        return {
+            message:'Hello,I am Header'
+        }
+    },
+    props:['a']
+}); 
+new header_a({propsData:{a:1}}).$mount('header');
+    </script>
+</body>
+</html>
