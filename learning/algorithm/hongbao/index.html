@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="money">
+    <script>
+        //js是单线程的，事件是异步的，事件处理函数肯定注册在哪里？
+        // 单用户点击的时候，找出来那个函数并执行，将事件对象交给处理函数
+        document
+            .getElementById('money')
+            .addEventListener('keydown', function(event){
+                if(event.keyCode == 13){
+                    // this input Dom元素
+                    // typeof 获得变量的类型
+                    // number.toFixed(2) number类型有个toFixed(2)去两位小数
+                    //从表单输入的都是字符串
+                    //
+                    //typeof this.value ==> String Math.ceil处理number 需要强转
+                    console.log(typeof this.value)
+                    //parseFloat 解析
+                    console.log(parseFloat(this.value).toFixed(2));
+                    //Math.random() => [0, 1)
+                    //Math.floor(Math.random()*(max-min)) + min 任意随机数
+                }
+            });
+
+    </script>
+</body>
+</html>
