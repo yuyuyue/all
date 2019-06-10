@@ -1,0 +1,5 @@
+<view >
+  <block wx:for="{{lengends}}" wx:for-item="lengend">
+    <text >{{lengend.name}} {{lengend.title}}</text>
+  </block>
+</view>
