@@ -9,7 +9,19 @@ const state = {
 
 const getters = {
   count: (state) => {
-    return state.count += 50
+    return state.count += 10
+  }
+}
+
+const actions = {
+  addAction (ctx) {
+    console.log(ctx)
+    ctx.commit('add', 10)
+    setTimeout(() => {ctx.commit('reduce', 40),console.log('reduce')}, 4000)
+    console.log('add')
+  },
+  reduceAction ({commit}) {
+    commit('reduce', 10)
   }
 }
 
@@ -21,8 +33,13 @@ const mutations = {
     state.count -= n
   }
 }
-export default new Vuex.Store({
+
+const moduleA = {
   state,
   mutations,
-  getters
+  getters,
+  actions
+}
+export default new Vuex.Store({
+  modules: {a: moduleA}
 })

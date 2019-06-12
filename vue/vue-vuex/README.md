@@ -1,21 +1,10 @@
-# vue-vuex
+### vuex基本用法
+- state 访问对象状态，控制数据共享
 
-> vue-vuex
+- mutations 同步修改状态
 
-## Build Setup
+- getters 计算属性过滤
 
-``` bash
-# install dependencies
-npm install
+- actions异步修改状态
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- module模块组
