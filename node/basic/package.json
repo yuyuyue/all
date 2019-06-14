@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "部署需要的依赖": "版本"
+  },
+  "devDependencies": {
+    "开发时需要的依赖": "版本"
+  },
+  "description": "描述",
+  "main": "主文件",
+  "maintainers": [
+    "开发人员信息"
+  ],
+  "name": "package-name-require",
+  "repository": {
+    "type": "类型",
+    "url": "地址"
+  },
+  "scripts": {
+    "": "在控制台上使用的命令"
+  },
+  "version": "版本"
+}
