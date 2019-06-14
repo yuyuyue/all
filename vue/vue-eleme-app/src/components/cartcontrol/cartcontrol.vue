@@ -19,7 +19,6 @@ export default {
   name: 'cartcontrol',
   data () {
     return {
-
     }
   },
   props: {

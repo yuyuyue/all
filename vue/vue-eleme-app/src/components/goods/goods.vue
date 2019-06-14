@@ -6,7 +6,7 @@
           <li v-for="(item,index) in goods"
               :key="index"
               class="menu-item"
-              :class="{'current' : currentIndex === index}"
+              :class="{'current' :currentIndex === index}"
               @click="selectMenu(index, $event)">
               <span class="text border-1px">
                 <span class="icon" v-show="item.type > 0" :class="classMap[item.type]"></span>
@@ -60,7 +60,8 @@ export default {
   data () {
     return {
       classMap:[],
-      goods:{}
+      goods:{},
+      listHeight: []
     }
   },
   methods: {
@@ -71,7 +72,12 @@ export default {
     },
     _initScrollFood () {
       this.foodScroll = new BScroll(this.$refs.foodsWrapper, {
-        click: true
+        click: true,
+        probeType: 3
+      })
+      this.foodScroll.on('scroll', pos => {
+        this.scrollY = Math.abs(Math.round(pos.y))
+        console.log(this.scrollY)
       })
     },
     addFood (target) {
@@ -83,10 +89,41 @@ export default {
         // 动画组件
         
       })
+    },
+    // 左右联动
+    selectMenu (index, event) {
+      if (!event._constructed) {
+        return 
+      }
+      let foodList =  this.$refs.foodList
+      let el = foodList[index]
+      this.foodScroll.scrollToElement(el, 300)
+    },
+    _calculateHeight () {
+      let foodList = this.$refs.foodList
+      let height = 0
+      this.listHeight.push(height)
+      for (let i = 0, length = foodList.length; i < length; i++) {
+        let item = foodList[i]
+        height += item.clientHeight
+        this.listHeight.push(height)
+      }
     }
   },
   components: {
     cartcontrol
+  },
+  computed: {
+    currentIndex () {
+      for (let i = 0, lenght = this.listHeight; i < lenght; i++) {
+        let height1 = this.listHeight[i]
+        let height2 = this.listHeight[i + 1]
+        if (!height2 || (this.scrollY >= height1 && this.scrollY <= height2)) {
+          return i
+        }
+      }
+      return 0
+    }
   },
   created () {
     this.classMap = ['decrease','discount','special','invoice','guarantee']
@@ -99,10 +136,12 @@ export default {
         this.$nextTick(() => {
           this._initScroll()
           this._initScrollFood()
+          this._calculateHeight()
         })
       }
     })
   }
+
 }
 </script>
 
