@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      string
+      1. 转为小写
+      2. 拼接一个字符串
+      3. split 为一个数组
+      var 是= '/231/'
+      s.toLowerCase
+    */
+    const lowCase = (str) => str.toLowerCase()
+    const add = str => `${str} hello`
+    const splitStr = str => str.split(' ')
+
+    const combineFun = _.compose(splitStr, add, lowCase)
+    console.log(combineFun('HEXO'))
+    // 函数式编程
+    // pipe 管道
+    // compose 组合
+    const pipeFun = pipe(lowCase, add, splitStr)
+
+    function pipe (...fns) {
+      return fns.reduce((prev, next) => {
+        // lowCase add add(lowCase())
+        // add(lowerCase())
+        // pipeFun === splitStr(add(lowerCase()))
+        return (...arg) => next(prve(...arg))
+      })
+    }
+    function compose () {
+      return fns.reduce((prev, next) => {
+        // lowCase add add(lowCase())
+        // add(lowerCase())
+        // pipeFun === splitStr(add(lowerCase()))
+        return (...arg) => prve(next(...arg))
+      })
+    }
+  </script>
+</body>
+</html>
