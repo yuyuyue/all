@@ -1,11 +1,11 @@
 {
-  "name": "vue-eleme-app",
+  "name": "vue-eleme-app-A",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "wn <652501825@qq.com>",
+  "author": "xmtzh <1318226678@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --open --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },

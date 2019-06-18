@@ -6,7 +6,7 @@
           <li v-for="(item,index) in goods"
               :key="index"
               class="menu-item"
-              :class="{'current' :currentIndex === index}"
+              :class="{'current' : currentIndex === index}"
               @click="selectMenu(index, $event)">
               <span class="text border-1px">
                 <span class="icon" v-show="item.type > 0" :class="classMap[item.type]"></span>
@@ -43,10 +43,17 @@
                         <cartcontrol :food="food" @add="addFood"></cartcontrol>
                       </div>
                     </div>
+
                 </li>
               </ul>
           </li>
         </ul>
+      </div>
+      <div>
+        <shopcart ref="shopcart"
+        :selectFoods="selectFoods"
+        :deliveryPrice="seller.deliveryPrice"
+        :minPrice="seller.minPrice"></shopcart>
       </div>
     </div>
   </div>
@@ -55,78 +62,99 @@
 <script>
 import BScroll from 'better-scroll'
 import cartcontrol from '../cartcontrol/cartcontrol'
+import shopcart from '../shopcart/shopcart'
 export default {
   name: 'goods',
-  data () {
+  props: {
+    seller: {
+      type:Object
+    }
+  },
+  data() {
     return {
       classMap:[],
-      goods:{},
-      listHeight: []
+      goods:[],
+      listHeight:[],
+      scrollY:0,
+
     }
   },
   methods: {
+    selectMenu(index, event) {
+      if(!event._constructed){
+        return
+      }
+      let foodList = this.$refs.foodList;
+      let el = foodList[index];
+      this.foodsScroll.scrollToElement(el,300);
+    },
     _initScroll () {
       this.menuScroll = new BScroll(this.$refs.menuWrapper, {
         click: true
       })
-    },
-    _initScrollFood () {
-      this.foodScroll = new BScroll(this.$refs.foodsWrapper, {
+      this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
         click: true,
         probeType: 3
+
       })
-      this.foodScroll.on('scroll', pos => {
-        this.scrollY = Math.abs(Math.round(pos.y))
-        console.log(this.scrollY)
+      this.foodsScroll.on('scroll', pos => {
+        this.scrollY = Math.abs(Math.round(pos.y));
+        console.log(this.scrollY);
       })
     },
-    addFood (target) {
-      this._drop(target)
-    },
-    _drop () {
-      // 体验优化，异步执行下落动画
-      this.$nextTick(() => {
+    _drop(target) {
+      // 体验优化, 异步执行下落动画
+      this.$nextTick(()=>{
         // 动画组件
-        
+        this.$refs.shopcart.drop(target)
       })
     },
-    // 左右联动
-    selectMenu (index, event) {
-      if (!event._constructed) {
-        return 
-      }
-      let foodList =  this.$refs.foodList
-      let el = foodList[index]
-      this.foodScroll.scrollToElement(el, 300)
+    addFood(res) {
+      console.log(res)
+      this._drop(res)
     },
-    _calculateHeight () {
-      let foodList = this.$refs.foodList
-      let height = 0
-      this.listHeight.push(height)
-      for (let i = 0, length = foodList.length; i < length; i++) {
-        let item = foodList[i]
-        height += item.clientHeight
+    _calculateHeight() {
+      let foodList = this.$refs.foodList;
+      let height = 0;
+      this.listHeight.push(height);
+      for(let i = 0; i<foodList.length; i++) {
+        let item = foodList[i];
+        height += item.clientHeight;
         this.listHeight.push(height)
       }
-    }
-  },
-  components: {
-    cartcontrol
+      // console.log(this.listHeight)
+    },
+
   },
   computed: {
-    currentIndex () {
-      for (let i = 0, lenght = this.listHeight; i < lenght; i++) {
-        let height1 = this.listHeight[i]
-        let height2 = this.listHeight[i + 1]
-        if (!height2 || (this.scrollY >= height1 && this.scrollY <= height2)) {
+    currentIndex() {
+      for(let i = 0; i<this.listHeight.length; i++){
+        let height1 = this.listHeight[i];
+        let height2 = this.listHeight[i + 1];
+        if(!height2 || (this.scrollY >= height1 && this.scrollY < height2)){
           return i
         }
       }
       return 0
+    },
+    selectFoods() {
+      let foods = [];
+      this.goods.forEach(good => {
+        good.foods.forEach(food => {
+          if(food.count) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods;
     }
   },
-  created () {
-    this.classMap = ['decrease','discount','special','invoice','guarantee']
+  components: {
+    cartcontrol,
+    shopcart
+  },
+  created() {
+    this.classMap = ['decrease','discount','special','invoice','guarantee'];
     this.$http.get('https://www.easy-mock.com/mock/5cbf0052a70f960bc333c48e/example/eleme-goods')
     .then(res => {
       console.log(res)
@@ -134,24 +162,22 @@ export default {
         this.goods =  res.data.data
         // 下面的代码检测页面结构是否渲染完成,完成了才会进行里面的操作
         this.$nextTick(() => {
-          this._initScroll()
-          this._initScrollFood()
-          this._calculateHeight()
+          this._initScroll();
+          this._calculateHeight();
         })
       }
     })
   }
-
 }
 </script>
 
 <style lang="stylus" scoped>
-@import '../../common/stylus/mixin.styl'
+@import '../../common/stylus/mixin.styl';
 
 .goods
   display flex
   position absolute
-  top 174px
+  top 175px
   bottom 46px
   width 100%
   overflow hidden
@@ -186,23 +212,23 @@ export default {
           background-size 12px 12px
           background-repeat no-repeat
           &.decrease {
-            bg-image('decrease_3')
+            bg-image('decrease_3');
           }
 
           &.discount {
-            bg-image('discount_3')
+            bg-image('discount_3');
           }
 
           &.guarantee {
-            bg-image('guarantee_3')
+            bg-image('guarantee_3');
           }
 
           &.invoice {
-            bg-image('invoice_3')
+            bg-image('invoice_3');
           }
 
           &.special {
-            bg-image('special_3')
+            bg-image('special_3');
           }
   .food-wrapper
     flex 1

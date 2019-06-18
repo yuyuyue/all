@@ -4,11 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-
 import './common/stylus/index.styl'
 
 Vue.config.productionTip = false
-Vue.prototype.$http = axios // 将axios挂载到vue的原型链上
+Vue.prototype.$http = axios  //将axios挂载在vue 的原型链上
 
 /* eslint-disable no-new */
 new Vue({

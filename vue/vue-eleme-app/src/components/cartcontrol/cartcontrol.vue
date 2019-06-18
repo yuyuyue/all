@@ -1,7 +1,7 @@
 <template>
   <div class="cartcontrol">
     <transition name="move">
-      <div class="cart-decrease" v-show="food.count"  @click.stop.prevent="decreaseCart"> 0">
+      <div class="cart-decrease" v-show="food.count > 0" @click.stop.prevent="decreaseCart">
         <span class="inner icon-remove_circle_outline"></span>
       </div>
     </transition>
@@ -16,13 +16,14 @@
 
 <script>
 export default {
-  name: 'cartcontrol',
-  data () {
+  name :'cartcontrol',
+  data() {
     return {
+
     }
   },
-  props: {
-    food: {
+  props:{
+    food:{
       type:Object
     }
   },
@@ -30,25 +31,23 @@ export default {
     // console.log(this.food)
   },
   methods: {
-    addCart (event) {
+    addCart(event) {
       console.log(event)
-      // if (event._constructed) { // 如果不存在这个属性,则为原生的点击事件,不执行下面的函数
+      // if(event._constructed){ // 如果不存在这个属性,则为原生的点击事件,不执行下面的函数
       //   return
       // }
-      if (!this.food.count) {
+      if(!this.food.count) {
         this.$set(this.food, 'count', 1)
-      } else {
+      }else {
         this.food.count ++
       }
-      this.$emit('add', event.target)
+      this.$emit('add',event.target)
     },
-    decreaseCart () {
-      // if (event._constructed) { // 如果不存在这个属性,则为原生的点击事件,不执行下面的函数
+    decreaseCart() {
+      // if(event._constructed){ // 如果不存在这个属性,则为原生的点击事件,不执行下面的函数
       //   return
       // }
-      if (this.food.count) {
-        this.food.count--
-      }
+      this.food.count--
     }
   }
 }

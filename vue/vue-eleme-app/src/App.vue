@@ -3,16 +3,18 @@
     <v-header :seller='seller'></v-header>
     <div class="tab border-1px">
       <div class="tab-item">
-        <router-link to="/goods">商品</router-link>
+        <router-link to="/goods"> 商品 </router-link>
       </div>
       <div class="tab-item">
-        <router-link to="ratings">评论</router-link>
+        <router-link to="/ratings"> 评论 </router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/seller">商家</router-link>
+        <router-link to="/seller"> 商家 </router-link>
       </div>
     </div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view :seller='seller'></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -22,45 +24,44 @@ export default {
   name: 'App',
   data () {
     return {
-      seller: {
-        // 从api获取
+      seller:{
+        // 要从api获取
       }
     }
   },
-  components: {
-    'v-header': header
+  components:{
+    'v-header':header
   },
-  created () {
-    this.$http.get('https://www.easy-mock.com/mock/5d00b0861bc93d0bae07b232/element/seller')
-      .then(res => {
-        console.log(res)
-        if (res.data.errno === 0) {
-          this.seller = Object.assign({}, this.seller, res.data.data)
-        }
-      })
+  created() {
+    this.$http.get('https://www.easy-mock.com/mock/5cbf0052a70f960bc333c48e/example/vue-eleme-seller')
+    .then(res => {
+      console.log(res)
+      if(res.data.errno === 0){
+        this.seller = Object.assign({},this.seller, res.data.data)
+      }
+    })
   }
 }
 </script>
 
-<style lang="stylus">
-@import './common/stylus/mixin.styl'
+<style lang="stylus" scoped>
+@import './common/stylus/mixin';
 .tab
   display flex
   width 100%
   height 40px
   line-height 40px
-  border-bottom 1px solid rgba(7, 17, 27, 0.1)
-  border-1px(rgba(7, 17, 27, 0.1))
+  border-bottom 1px solid rgba(7,17,27,0.1)
+  border-1px(rgba(7,17,27,0.1))
   .tab-item
     flex 1
     text-align center
-
     & > a
       display block
       font-size 14px
-      color rgb(77, 85, 93)
+      color rgb(77,85,93)
       text-decoration none
-
       &.router-link-active
-        color rgb(240, 20, 20)
+        color rgb(240,20,20)
 </style>
+
