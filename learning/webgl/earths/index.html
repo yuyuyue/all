@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>webGL earth</title>
+</head>
+<body>
+  <!-- canvas是 webGl的容器 -->
+  <canvas id="webglcanvas">
+
+  </canvas>
+  <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+  <script>
+    var canvas,//幕布
+      camera,//相机
+      scene,//场景
+      group,//群组
+      renderer//渲染器
+    var mouseX = 0
+    var mouseY = 0
+    var windowHalfX = window.innerWidth / 2
+    var windowHalfY = window.innerHeight / 2
+
+    // 初始化
+    init()
+    //开始动画
+    animate()
+    function init() {
+      //画布
+      canvas = document.getElementById('webglcanvas')
+      // THREE框架
+      // 参数 拍摄角度 拿的方式(长宽比例) 最近 最远
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000)
+      camera.position.z = 500
+      //场景
+      scene = new THREE.Scene()
+      scene.background = new THREE.Color(0xffffff)
+      //群组
+      group = new THREE.Group()
+      //将群组放入场景
+      scene.add(group)
+
+      // 地球 形状 + 表面材质
+      var loader = new THREE.TextureLoader()
+      // load 异步函数 需要资源加载完才能使用回调函数
+      loader.load('earth.jpg', function (texture) {//earths.jpg => texture
+        //形状
+        //参数 半径 x y
+        var geometry = new THREE.SphereGeometry(200, 20, 20)
+        //材质 贴图
+        var material = new THREE.MeshBasicMaterial({map : texture})
+        var mesh = new THREE.Mesh(geometry, material)
+        //添加物体
+        group.add(mesh)
+      })
+      //渲染
+      renderer = new THREE.WebGLRenderer({
+        //显示地点
+        canvas: canvas,
+        antialias: true//抗锯齿
+      })
+      //投影大小
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      document.addEventListener('mousemove', onDocumentMouseMove, false)
+      document.addEventListener('resize', onWindowResize, false)
+    }
+    function animate () {
+      //API 不停地刷新canvas的静态照片
+      requestAnimationFrame(animate)
+      // 将相机拍下的场景渲染出来
+      render()
+    }
+    function render() {
+      camera.position.x += (mouseX - camera.position.x)*0.05
+      camera.position.y += (-mouseY - camera.position.y)*0.05
+      camera.lookAt(scene.position)
+      renderer.render(scene, camera)
+      group.rotation.y -= 0.005
+    }
+    function onDocumentMouseMove (event) {
+      mouseX = Math.floor(event.clientX - windowHalfX)
+      mouseY = Math.floor(event.clientY - windowHalfY)
+    }
+    function onWindowResize (evnet) {
+      windowHalfX = window.innerWidth / 2
+      windowHalfY = window.innerWidth / 2
+      // 重置比例
+      camera.aspect = windowHalfX / windowHalfY
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth ,window.innerHeight)
+    }
+  </script>
+</body>
+</html>
